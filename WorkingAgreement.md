@@ -60,7 +60,7 @@
 	- An assigned person.
 - Work will be distributed evenly for each team member and decided at meetings.
 - Work will be completed on our own laptops and pushed to GitHub.
-- It is each team members responsability to complete work on time. If work is consistently not completed on the person will be held accountable during meetings.
+- It is each team members responsibility to complete work on time. If work is consistently not completed on the person will be held accountable during meetings.
 
 # Workflow
 - Get the assignment, review it, discuss it with the team, create a checklist on the task, complete the task, and review the task.
@@ -78,6 +78,13 @@ We will review this:
 
 ## Team members:
 - Jacob Hefley
+<<<<<<< HEAD
 - Tony Hoyev
 - Murtaza Akbari
 
+=======
+- Chancie Van
+- Yasir Farah
+- Murtaza Akbari
+- Tony Hoyev
+>>>>>>> 3db3cf6759a88542f29f28177317b2a34ce7a874
