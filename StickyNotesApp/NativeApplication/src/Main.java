@@ -30,7 +30,9 @@ SwingUtilities.invokeLater(() -> {
     label.setHorizontalAlignment(SwingConstants.LEFT);
     frame.add(label, BorderLayout.NORTH);
 
-    JTextArea textArea = new JTextArea();
+    JTextPane textPane = new JTextPane();
+
+//    JTextArea textArea = new JTextArea();
     
 // Start user picks color
 
@@ -50,7 +52,7 @@ SwingUtilities.invokeLater(() -> {
         if (chosenColor != null) {
             //sets frame then text area.
             frame.getContentPane().setBackground(chosenColor);
-            textArea.setBackground(chosenColor);
+            textPane.setBackground(chosenColor);
         }
     });
 
@@ -59,7 +61,7 @@ SwingUtilities.invokeLater(() -> {
 
 //  Window Setup
 
-	JScrollPane scrollPane = new JScrollPane(textArea);
+	JScrollPane scrollPane = new JScrollPane(textPane);
     frame.add(scrollPane, BorderLayout.CENTER);
 
 // Frame setup
