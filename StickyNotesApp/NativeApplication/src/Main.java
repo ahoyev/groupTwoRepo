@@ -13,13 +13,18 @@ public class Main {
      * Invoked on start.
      * @param args ignored
      */
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Sample App");
-        JLabel label = new JLabel("Hello from Java!!!!", SwingConstants.CENTER);
+    static void main(String[] args) {
+        JFrame frame = new JFrame("Welcome to Sticky Note!");
+        JLabel label = new JLabel("Enter text");
+	label.setHorizontalAlignment(SwingConstants.CENTER);
+	label.setVerticalAlignment(SwingConstants.TOP);
         frame.add(label);
         frame.setSize(500, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
+	JTextArea textArea = new JTextArea();
+	JScrollPane  scrollPane = new JScrollPane(textArea);  
+	frame.setLocationRelativeTo(null);
+	frame.add(scrollPane);
         frame.setVisible(true);
     }
 }
