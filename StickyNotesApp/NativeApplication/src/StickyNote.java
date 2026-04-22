@@ -36,14 +36,6 @@ public class StickyNote extends JFrame{
 
     highlightButton.addActionListener(e -> {
         TextFormatter.highlight(textPane);
-   
-     /*      THIS IS A PENDING CHANGE.
-        highlightButton.addActionListener(e -> {
-         if (TextFormatter.highlight(textPane) = true){
-            
-         }
-        });
-        */
     });
 
     boldButton.addActionListener(e -> {
