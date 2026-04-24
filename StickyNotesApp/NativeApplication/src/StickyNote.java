@@ -58,7 +58,7 @@ public class StickyNote extends JFrame{
     private void configureFrame() {
         setTitle("QuickNotes.");
         setLayout(new BorderLayout());
-        getContentPane().setBackground(Color.YELLOW);
+        getContentPane().setBackground(Color.YELLOW); // Default note color is yellow.
         setSize(500, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);

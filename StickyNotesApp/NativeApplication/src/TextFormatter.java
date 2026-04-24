@@ -7,35 +7,38 @@ import java.awt.Color;
 //Start formatter class
 public class TextFormatter {
 
+    private static final TextFormatController controller = new TextFormatController();
 //Start highlight method
-public static void highlight(JTextPane textPane){
+public static void highlight(JTextPane textPane) {
     StyledDocument doc = textPane.getStyledDocument();
-
-    //This actually does the color highlight.
 
     int start = textPane.getSelectionStart();
     int end = textPane.getSelectionEnd();
-    
-    if (start == end) return;
-    
-     boolean isHighlighted = StyleConstants.getBackground(
+
+    boolean hasSelection = start != end;
+    if (!hasSelection) {
+        return;
+    }
+
+    Color currentTextBackground = StyleConstants.getBackground(
         doc.getCharacterElement(start).getAttributes()
-    ).equals(Color.YELLOW);
+    );
+
+    boolean currentlyApplied = controller.applyHighlight().equals(currentTextBackground);
+
+    FormatAction action = controller.decideAction(hasSelection, currentlyApplied);
 
     Style style = textPane.addStyle("Highlight", null);
 
-    if (isHighlighted) {
-        // Remove highlight, assumes background color is white.
-        StyleConstants.setBackground(style, Color.WHITE);
-    } 
-    
-    else {
-        // Apply highlight
-        StyleConstants.setBackground(style, Color.YELLOW);
+    if (action == FormatAction.REMOVE) {
+        StyleConstants.setBackground(style, controller.removeHighlight(textPane.getBackground()));
+    } else if (action == FormatAction.APPLY) {
+        StyleConstants.setBackground(style, controller.applyHighlight());
+    } else {
+        return;
     }
 
     doc.setCharacterAttributes(start, end - start, style, false);
-    
 }
 
 //Start bold text method
