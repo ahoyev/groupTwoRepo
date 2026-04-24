@@ -177,6 +177,7 @@
 
   <target name="windows" depends="jar" if="isWindows" description="[Windows Only] Builds the .msi installer">
     <mkdir dir="${dist.dir}"/>
+    <mkdir dir="wix-resources"/>
     <exec executable="jpackage" failonerror="true">
       <arg value="--input"/><arg value="${jar.dir}"/>
       <arg value="--dest"/><arg value="${dist.dir}"/>
@@ -187,8 +188,13 @@
       <arg value="--icon"/><arg value="${icon.file}"/>
       <arg value="--app-version"/><arg value="${app.version}"/>
       <arg value="--win-dir-chooser"/>
-      <arg value="--win-shortcut"/>
+      <!-- Prompts the user during install: "Create a desktop shortcut?" -->
+      <arg value="--win-shortcut-prompt"/>
       <arg value="--win-menu"/>
+      <!-- Fixed GUID keeps upgrade/repair working across rebuilds -->
+      <arg value="--win-upgrade-uuid"/><arg value="7A3F2C1D-4E8B-4A2F-9C6D-1B5E7A3F2C1D"/>
+      <!-- Resource dir: put custom WiX files here to override installer UI -->
+      <arg value="--resource-dir"/><arg value="wix-resources"/>
     </exec>
     <move todir="${dist.dir}">
       <fileset dir="${dist.dir}">
